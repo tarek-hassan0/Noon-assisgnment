@@ -1,0 +1,36 @@
+@import './design-variables.module';
+
+html, body {
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: $background_color;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: $normalized_font_family;
+}
+
+a {
+    color: $link_color;
+    text-decoration: none;
+    background: transparent;
+    &:focus {
+        outline: none;
+    }
+    &:hover,
+    &:active {
+        outline: 0;
+    }
+}
+
+

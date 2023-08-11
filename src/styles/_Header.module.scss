@@ -1,0 +1,30 @@
+@import './design-variables.module';
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+    padding: 8px 0;
+    .avatar-container {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .avatar-skeleton {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    a {
+        color: $primary_color;
+        cursor: pointer;
+    }
+}

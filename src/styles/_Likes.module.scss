@@ -1,0 +1,14 @@
+@import "./design-variables.module";
+
+.likes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 8px;
+    padding: 10px;
+    a {
+        color: $secondary_color;
+        font-size: small;
+        font-weight: 700;
+    }
+}

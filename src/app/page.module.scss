@@ -1,0 +1,30 @@
+@import "../styles/mixins";
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px;
+}
+
+@include tablet() {
+    .container {
+        padding-bottom: 60px;
+        padding-top: 60px;
+    }
+}
+
+@include laptop() {
+    .container {
+        padding-bottom: 60px;
+        padding-top: 10px;
+    }
+}
+
+@include desktop() {
+  .container {
+      padding-bottom: 60px;
+      padding-top: 10px;
+  }
+}

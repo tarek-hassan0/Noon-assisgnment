@@ -1,0 +1,18 @@
+$primary_color: #000;
+$secondary_color: #262626;
+$tertiary_color: #A5A5A5;
+$link_color: #0095F6;
+$background_color: #FAFAFA;
+$nav_background_color: #FFF;
+$post_background_color: #FFF;
+$post_header_background_color: #FFF;
+$normalized_font_family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto;
+$border_color: #ededed;
+$heart_red_color: #ed4956;
+
+:export {
+    primary_color: $primary_color;
+    secondary_color: $secondary_color;
+    tertiary_color: $tertiary_color;
+    heart_red_color: $heart_red_color;
+}

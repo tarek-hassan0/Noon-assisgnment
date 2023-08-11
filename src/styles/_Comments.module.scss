@@ -1,0 +1,11 @@
+@import './design-variables.module';
+
+.comments {
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    color: $tertiary_color;
+    font-size: smaller;
+    a {
+        color: $tertiary_color;
+    }
+}

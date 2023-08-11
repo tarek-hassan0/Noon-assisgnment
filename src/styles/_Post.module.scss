@@ -1,0 +1,11 @@
+@import './design-variables.module';
+
+.post_container {
+    width: 100%;
+    max-width: 500px;
+    background-color: $post_background_color;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    border: 1px solid $border_color;
+    margin-bottom: 24px;
+}

@@ -1,0 +1,66 @@
+@import "./design-variables.module";
+@import "./mixins";
+
+.nav {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: $nav_background_color;
+    border-top: 2px solid $border_color;
+    z-index: 99999;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-evenly;
+        li {
+            padding: 12px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                display: flex;
+                align-items: center;
+                column-gap: 16px; 
+                color: $primary_color;
+                font-weight: 600;
+
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include laptop() {
+    .nav {
+        top: 0;
+        bottom: initial;
+        border-top: 0;
+        border-bottom: 2px solid #ededed;
+        margin-bottom: 50px;
+
+        ul {
+            li {
+                a {
+                    span {
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include desktop() {
+    .nav {
+        ul {
+            justify-content: center;
+            column-gap: 265px;
+        }
+    }
+}
