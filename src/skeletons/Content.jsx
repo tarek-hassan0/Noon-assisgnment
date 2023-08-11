@@ -6,7 +6,7 @@ const Content = (props) => {
 
     return (
         <div className={ContentStyles["content"]}>
-            <Skeleton height={300} width={500} className={ContentStyles['skeleton']}/>
+            <Skeleton height={300} width={500} containerClassName={ContentStyles['skeleton']}/>
         </div>
     );
 };
