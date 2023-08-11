@@ -1,4 +1,3 @@
-"use client";
 import PostStyles from "@/styles/_Post.module.scss";
 import Header from "./Header";
 import Content from "./Content";

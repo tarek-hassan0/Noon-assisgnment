@@ -1,4 +1,3 @@
-"use client";
 import DescriptionStyles from "@/styles/_Description.module.scss";
 import Link from "next/link";
 

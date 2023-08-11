@@ -1,4 +1,3 @@
-"use client";
 import { HeartIcon } from "@/components/Icons";
 import LikesStyles from "@/styles/_Likes.module.scss";
 import designVariables from "@/styles/_design-variables.module.scss";

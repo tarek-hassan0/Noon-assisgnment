@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import designVariables from "@/styles/_design-variables.module.scss";
 import ContentStyles from "@/styles/_Content.module.scss";

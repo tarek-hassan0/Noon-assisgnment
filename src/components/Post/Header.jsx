@@ -1,8 +1,6 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import HeaderStyles from "@/styles/_Header.module.scss";
-import {useState} from "react";
 
 const Header = (props) => {
     const { username, avatarSrc } = props.user;

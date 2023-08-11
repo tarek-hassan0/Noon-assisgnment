@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import CommentsStyle from "@/styles/_Comments.module.scss";
 
