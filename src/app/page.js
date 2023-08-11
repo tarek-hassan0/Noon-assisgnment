@@ -22,10 +22,12 @@ export default function Home() {
     const { state, dispatch } = usePostsContext();
     const { ref, inView } = useInView({ threshold: 0 });
 
+    // Fetch initial posts on page load
     useEffect(() => {
         dispatch({ type: "FETCH_POSTS", payload: null });
     }, []);
 
+    // Load more posts when the last post is in view
     useEffect(() => {
         dispatch({ type: "FETCH_MORE_POSTS", payload: null });
     }, [inView]);
@@ -48,11 +50,13 @@ export default function Home() {
     }
 
     return state.posts.map((postData, index) => {
+        // Load the Post component eagerly if it's the first post
         if(index === 0){ 
             return(
                 <EagerPost key={postData.id} postID={postData.id} />
             )
         }
+        // Add the ref to the last post to track if it is in view and load more posts
         else if (index === state.posts.length - 1) {
             return (
                 <Fragment key={postData.id + 1}>

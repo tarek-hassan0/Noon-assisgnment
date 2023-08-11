@@ -15,6 +15,7 @@ const LazyPost = dynamic(() => import("../../components/Post"), {
 export default function Favorites() {
     const { state, dispatch } = usePostsContext();
 
+    // Fetch initial favorite posts on page load
     useEffect(() => {
         dispatch({ type: "FETCH_FAVORITES", payload: null });
     }, []);
@@ -37,9 +38,12 @@ export default function Favorites() {
     }
 
     return state.favorites.map((postData, index) => {
+        // Load the Post component eagerly if it's the first post
         if(index === 0) {
             return <EagerPost key={postData.id} postID={postData.id}/>
-        } else if (index === state.favorites.length - 1) {
+        }
+        // Add the ref to the last post to track if it is in view and load more posts 
+        else if (index === state.favorites.length - 1) {
             return (
                 <LazyPost
                     key={postData.id}

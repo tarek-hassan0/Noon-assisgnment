@@ -13,6 +13,8 @@ const Post = (props) => {
     const { innerRef, postID } = props;
     const {state} = usePostsContext();
 
+    // Filter posts by id once any pass props to the sub-components
+    // Select which posts to filter based on the pathname
     const postData =  FilterPostsById(pathname ==='Favorites'? state.favorites : state.posts, postID);
 
     return (
