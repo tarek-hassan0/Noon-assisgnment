@@ -13,10 +13,6 @@ const LazyPost = dynamic(() => import("../components/Post"), {
 });
 import EagerPost from "@/components/Post" ;
 
-export const metadata = {
-    title: "Home",
-    description: "Posts Feed",
-};
 
 export default function Home() {
     const { state, dispatch } = usePostsContext();
