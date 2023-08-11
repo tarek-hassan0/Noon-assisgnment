@@ -344,13 +344,13 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 lastPostID: 5,
-                loadingPosts: false,
+                postsLoading: false,
                 posts: [...data.slice(0, 5)],
             };
         case "FETCH_MORE_POSTS":
             return {
                 ...state,
-                loadingPosts: false,
+                postsLoading: false,
                 posts: [
                     ...state.posts,
                     ...data.slice(state.lastPostID, state.lastPostID + 5),

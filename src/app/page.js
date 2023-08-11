@@ -30,7 +30,7 @@ export default function Home() {
         dispatch({ type: "FETCH_MORE_POSTS", payload: null });
     }, [inView]);
 
-    if (state.loadingPosts) {
+    if (state.postsLoading) {
         return <PostSkeleton />;
     }
 
@@ -43,7 +43,7 @@ export default function Home() {
         );
     }
 
-    if (state.loadingPosts === false && state.posts.length === 0) {
+    if (state.favoritesLoading === false && state.posts.length === 0) {
         return <EmptyPage msg="There are no posts" />;
     }
 

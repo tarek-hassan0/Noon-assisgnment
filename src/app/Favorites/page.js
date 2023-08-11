@@ -19,7 +19,7 @@ export default function Favorites() {
         dispatch({ type: "FETCH_FAVORITES", payload: null });
     }, []);
 
-    if (state.loadingFavorites) {
+    if (state.favoritesLoading) {
         return <PostSkeleton />;
     }
 
