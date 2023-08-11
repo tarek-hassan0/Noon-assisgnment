@@ -1,3 +1,4 @@
+@import './design-variables.module';
 @import "./mixins";
 
 .content {
@@ -5,8 +6,11 @@
     display: flex;
     width: 100%;
     max-height: 700px;
+    background-color: $tertiary_color;
     img {
-        object-fit: cover;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
     }
     .title-container {
         position: absolute;

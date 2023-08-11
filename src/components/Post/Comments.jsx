@@ -10,7 +10,7 @@ const Comments = (props) => {
         <div className={CommentsStyle["comments"]}>
             {
                 commentsCount > 0 &&
-                <Link href={"#"}>View {commentsCount} comments</Link>
+                <Link href={"#"} prefetch={false}>View {commentsCount} comments</Link>
             }
         </div>
     );

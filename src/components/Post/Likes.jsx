@@ -14,7 +14,7 @@ const Likes = (props) => {
                 width={16}
                 height={16}
             />
-            <Link href={"#"}>{likesCount + " Likes" || ""}</Link>
+            <Link href={"#"} prefetch={false}>{likesCount + " Likes" || ""}</Link>
         </div>
     );
 };

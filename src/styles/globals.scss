@@ -1,6 +1,7 @@
-@import './design-variables.module';
+@import "./design-variables.module";
 
-html, body {
+html,
+body {
     max-width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
@@ -33,4 +34,21 @@ a {
     }
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+    background: $background_color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $scrollbar_color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $scrollbar_hover_color;
+}

@@ -10,7 +10,7 @@ const Description = (props) => {
             <div>
                 {description.length > 0 && description}
                 <div>
-                    {tags?.map((tag, index) => <Link href={tag} key={index}>{" #" + tag}</Link>)}
+                    {tags?.map((tag, index) => <Link href={tag} key={index} prefetch={false}>{" #" + tag}</Link>)}
                 </div>
             </div>
         </div>

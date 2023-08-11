@@ -9,7 +9,7 @@ const Header = (props) => {
 
     return (
         <div className={HeaderStyles.header}>
-            <Link href={"#"}>
+            <Link href={"#"} prefetch={false}>
                 <div className={HeaderStyles["avatar-container"]}>
                     <Image
                         width={32}
@@ -19,7 +19,7 @@ const Header = (props) => {
                     />
                 </div>
             </Link>
-            <Link href={"#"}>
+            <Link href={"#"} prefetch={false}>
                 <b>{username}</b>
             </Link>
         </div>

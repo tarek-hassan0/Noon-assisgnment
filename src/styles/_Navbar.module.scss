@@ -42,7 +42,6 @@
         bottom: initial;
         border-top: 0;
         border-bottom: 2px solid #ededed;
-        margin-bottom: 50px;
 
         ul {
             li {
@@ -58,9 +57,20 @@
 
 @include desktop() {
     .nav {
+        top: 0;
+        bottom: initial;
+        border-top: 0;
+        border-bottom: 2px solid #ededed;
         ul {
             justify-content: center;
             column-gap: 265px;
+            li {
+                a {
+                    span {
+                        display: inline;
+                    }
+                }
+            }
         }
     }
 }
