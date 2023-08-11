@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
     localStorage.setItem("favorites", JSON.stringify([]));
 }
 
-const data = [
+const DB = [
     {
         user: {
             id: 1,
@@ -351,7 +351,7 @@ const reducer = (state, action) => {
                 ...state,
                 lastPostID: 5,
                 postsLoading: false,
-                posts: [...data.slice(0, 5)],
+                posts: [...DB.slice(0, 5)],
             };
         case "FETCH_MORE_POSTS":
             return {
@@ -359,7 +359,7 @@ const reducer = (state, action) => {
                 postsLoading: false,
                 posts: [
                     ...state.posts,
-                    ...data.slice(state.lastPostID, state.lastPostID + 5),
+                    ...DB.slice(state.lastPostID, state.lastPostID + 5),
                 ],
                 lastPostID: state.lastPostID + 5,
             };
@@ -369,7 +369,7 @@ const reducer = (state, action) => {
                 ...state,
                 favoritesLoading: false,
                 favorites: [
-                    ...data.filter((post) =>
+                    ...DB.filter((post) =>
                         tempFavoritesIds.includes(post.id)
                     ),
                 ],
