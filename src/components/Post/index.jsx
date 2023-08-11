@@ -6,7 +6,7 @@ import Likes from "./Likes";
 import Description from "./Description";
 import Comments from "./Comments";
 import {usePostsContext} from "@/app/Posts-Context";
-import { useFilterPostsById } from "@/hooks/useFilterPostsById";
+import { FilterPostsById } from "@/utils/index.js";
 import { usePathname } from "next/navigation";
 
 const Post = (props) => {
@@ -14,7 +14,7 @@ const Post = (props) => {
     const { innerRef, postID } = props;
     const {state} = usePostsContext();
 
-    const postData =  useFilterPostsById(pathname ==='Favorites'? state.favorites : state.posts, postID);
+    const postData =  FilterPostsById(pathname ==='Favorites'? state.favorites : state.posts, postID);
 
     return (
         <article className={PostStyles.post_container} ref={innerRef}>

@@ -1,6 +1,12 @@
 "use client";
 
 import { createContext, useContext, useReducer } from "react";
+import {
+    getLocalStorageValue,
+    setLocalStorageValue,
+    RemovePostAsFavorite,
+    SetPostAsFavorite,
+} from "@/utils/index.js";
 
 if (typeof window !== "undefined") {
     localStorage.setItem("favorites", JSON.stringify([]));
@@ -232,7 +238,7 @@ const data = [
                 "https://images.unsplash.com/photo-1665571299275-c356882f80df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0OXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         description: "Post 11 description",
-        tags: ['tag1'],
+        tags: ["tag1"],
         commentsCount: 25,
         likesCount: 30,
         date: "2021-01-01",
@@ -253,7 +259,7 @@ const data = [
                 "https://images.unsplash.com/photo-1691669686323-4f72f54e64d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1MHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         description: "Post 12 description",
-        tags: ['tag1'],
+        tags: ["tag1"],
         commentsCount: 25,
         likesCount: 30,
         date: "2021-01-01",
@@ -274,7 +280,7 @@ const data = [
                 "https://images.unsplash.com/photo-1690983730309-4a9ac0a2a61e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         description: "Post 13 description",
-        tags: ['tag1'],
+        tags: ["tag1"],
         commentsCount: 25,
         likesCount: 30,
         date: "2021-01-01",
@@ -295,7 +301,7 @@ const data = [
                 "https://images.unsplash.com/photo-1691424009186-c31e353d9302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1NHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         description: "Post 14 description",
-        tags: ['tag1'],
+        tags: ["tag1"],
         commentsCount: 25,
         likesCount: 30,
         date: "2021-01-01",
@@ -316,7 +322,7 @@ const data = [
                 "https://images.unsplash.com/photo-1691458349071-aab82690fe23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0OHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         description: "Post 15 description",
-        tags: ['tag1'],
+        tags: ["tag1"],
         commentsCount: 25,
         likesCount: 30,
         date: "2021-01-01",
@@ -340,7 +346,7 @@ const reducer = (state, action) => {
     let tempFavoritesIds;
     let tempPosts;
     switch (action.type) {
-        case "FETCH_POSTS":;
+        case "FETCH_POSTS":
             return {
                 ...state,
                 lastPostID: 5,
@@ -358,11 +364,7 @@ const reducer = (state, action) => {
                 lastPostID: state.lastPostID + 5,
             };
         case "FETCH_FAVORITES":
-            if (typeof window !== "undefined") {
-                tempFavoritesIds = JSON.parse(
-                    localStorage.getItem("favorites")
-                );
-            }
+            tempFavoritesIds = getLocalStorageValue("favorites") ?? [];
             return {
                 ...state,
                 favoritesLoading: false,
@@ -373,46 +375,24 @@ const reducer = (state, action) => {
                 ],
             };
         case "ADD_TO_FAVORITES":
-            if (typeof window !== "undefined") {
-                tempFavoritesIds = JSON.parse(
-                    localStorage.getItem("favorites")
-                );
-                tempFavoritesIds.push(action.payload);
-                localStorage.setItem(
-                    "favorites",
-                    JSON.stringify(tempFavoritesIds)
-                );
-            }
-            tempPosts = state.posts.map((post) => {
-                if (post.id === action.payload) {
-                    post.isFavorite = true;
-                    post.likesCount++;
-                }
-                return post;
-            });
+            tempFavoritesIds = getLocalStorageValue("favorites") ?? [];
+            tempFavoritesIds.push(action.payload);
+            setLocalStorageValue("favorites", tempFavoritesIds);
+
+            tempPosts = SetPostAsFavorite(state.posts, action.payload);
             return {
                 ...state,
                 posts: [...tempPosts],
                 favorites: [...tempPosts.filter((post) => post.isFavorite)],
             };
         case "REMOVE_FROM_FAVORITES":
-            if (typeof window !== "undefined") {
-                tempFavoritesIds = JSON.parse(
-                    localStorage.getItem("favorites")
-                );
-                tempFavoritesIds = tempFavoritesIds.filter((id) => id !== action.payload);
-                localStorage.setItem(
-                    "favorites",
-                    JSON.stringify(tempFavoritesIds)
-                );
-            }
-            tempPosts = state.posts.map((post) => {
-                if (post.id === action.payload) {
-                    post.isFavorite = false;
-                    post.likesCount--;
-                }
-                return post;
-            });
+            tempFavoritesIds = getLocalStorageValue("favorites") ?? [];
+            tempFavoritesIds = tempFavoritesIds.filter(
+                (id) => id !== action.payload
+            );
+            setLocalStorageValue("favorites", tempFavoritesIds);
+
+            tempPosts = RemovePostAsFavorite(state.posts, action.payload);
             return {
                 ...state,
                 posts: [...tempPosts],
