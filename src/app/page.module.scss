@@ -10,21 +10,18 @@
 
 @include tablet() {
     .container {
-        padding-bottom: 60px;
-        padding-top: 60px;
+        padding: 60px 0;
     }
 }
 
 @include laptop() {
     .container {
-        padding-bottom: 60px;
-        padding-top: 10px;
+        padding: 60px 0;
     }
 }
 
 @include desktop() {
   .container {
-      padding-bottom: 60px;
-      padding-top: 10px;
+      padding: 60px 0;
   }
 }
