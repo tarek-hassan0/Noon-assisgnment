@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { usePostsContext } from "@/app/Posts-Context";
 import { Fragment } from 'react';
+import EmptyPage from "@/components/EmptyPage";
+import PageError from "@/components/PageError";
 
 const Post = dynamic(() => import("../components/Post"), {
     loading: () => <PostSkeleton />,
@@ -27,14 +29,14 @@ export default function Home() {
     if (state.loadingPosts) {
         return <PostSkeleton />;
     }
-
+    // There was an error loading posts
     if (state.postsError)
         return (
-            <h1 style={{ color: "red", textAlign: 'center' }}>There was an error loading posts</h1>
+            <PageError title={'Somethin went wrong while loading posts'} msg={'Try to Refresh the page'} />
         );
 
     if (state.loadingPosts === false && state.posts.length === 0) {
-        return <h1 style={{ color: "#e2e2e2", textAlign: 'center' }}>There are no posts yet</h1>;
+        return <EmptyPage msg="There are no posts" />;
     }
 
     return state.posts.map((postData, index) => {
